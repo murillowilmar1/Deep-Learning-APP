@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Classification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #f8f8f8;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .navbar-inverse .navbar-nav>li>a {
+      color: #fff;
+    }
+
+    .navbar-inverse .navbar-nav>li>a:hover,
+    .navbar-inverse .navbar-nav>li>a:focus {
+      color: #f8f8f8;
+    }
+
+    .footer {
+      background-color: #f8f8f8;
+      color: #777;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .footer .social-icons {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    .footer .social-icons a {
+      color: #428bca;
+      margin: 0 10px;
+    }
+
+    .footer .social-icons a:hover {
+      color: #31708f;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Image Classification</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#"><i class="fas fa-layer-group"></i> Models</a></li>
+        <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+        <li><a href="#"><i class="fas fa-brain"></i> DeepLearning</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-content">
+  <h1>Geometric Image Classification</h1>
+  <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label class="control-label col-sm-4" for="my_image">Upload Your Image:</label>
+      <div class="col-sm-8">          
+        <input type="file" class="form-control" name="my_image" id="my_image">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-4 col-sm-8">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  {% if prediction %}
+    <img src="{{ img_path }}" alt="Prediction Image" class="img-responsive">
+    <h2>Your Prediction: <i>{{ prediction }}</i></h2>
+  {% endif %}
+</div>
+
+<footer class="footer">
+  <p>&copy; 2023 Your Company. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <!-- Agrega más iconos de redes sociales según tus necesidades -->
+  </div>
+</footer>
+
+</body>
+</html>
